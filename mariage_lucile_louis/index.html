@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#7B6BA5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=yes">
+  <meta name="description" content="Mariage de Lucile & Louis - 17 juillet 2027 au Mas de Coupie, Eyguières">
+  <title>Notre Mariage — 17 Juillet 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --lavender: #7B6BA5;
+      --lavender-light: #A99CC7;
+      --olive: #7A8B5C;
+      --olive-light: #9AAD7E;
+      --cream: #FBF7F0;
+      --gold: #C9A84C;
+      --gold-light: #E0C97A;
+      --brown: #3D2C1E;
+      --beige: #E8E0D4;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-left: env(safe-area-inset-left, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 70px;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      color: var(--brown);
+      background: var(--cream);
+      line-height: 1.7;
+      font-weight: 300;
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; }
+
+    /* ===== TYPO FLUIDE (clamp = s'adapte auto) ===== */
+    .section-title {
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
+      color: var(--lavender);
+      text-align: center;
+      margin-bottom: 0.5rem;
+      padding: 0 1rem;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--olive);
+      font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+      margin-bottom: clamp(2rem, 5vw, 3rem);
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      padding: 0 1rem;
+    }
+    .section-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 2.5rem;
+      padding: 0 1rem;
+    }
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      width: clamp(40px, 10vw, 80px);
+      height: 1px;
+      background: var(--gold);
+    }
+    .section-divider span { font-size: 1.4rem; }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(251, 247, 240, 0.96);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      padding: 0 1.5rem;
+      padding-left: max(1.5rem, var(--safe-left));
+      padding-right: max(1.5rem, var(--safe-right));
+      height: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 20px rgba(61, 44, 30, 0.08);
+      transition: height 0.3s ease;
+    }
+    .navbar.scrolled { height: 55px; }
+    .nav-links {
+      display: flex;
+      gap: 0.2rem;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--brown);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 12px 14px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      display: block;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--lavender);
+      background: rgba(123, 107, 165, 0.08);
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      color: var(--brown);
+      cursor: pointer;
+      position: absolute;
+      right: max(1rem, var(--safe-right));
+      width: 48px;
+      height: 48px;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-brand {
+      display: none;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--lavender);
+      position: absolute;
+      left: max(1.2rem, var(--safe-left));
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 1.5rem 60px;
+      padding-top: calc(100px + var(--safe-top));
+      background:
+        linear-gradient(rgba(251,247,240,0.75), rgba(232,224,212,0.80)),
+        url('images/mas_de_coupie.jpg') center/cover no-repeat;
+      /* pas de background-attachment:fixed → bug iOS et perf mobile */
+      background-attachment: scroll;
+      position: relative;
+    }
+    .hero-content { position: relative; z-index: 1; width: 100%; max-width: 600px; }
+
+    .hero-topdivider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 2rem;
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+    .hero-topdivider::before,
+    .hero-topdivider::after {
+      content: '';
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-photo {
+      display: inline-block;
+      background: #FFF;
+      padding: 14px 14px 45px;
+      border-radius: 4px;
+      box-shadow: 0 20px 50px rgba(61,44,30,0.28), 0 5px 15px rgba(61,44,30,0.15);
+      transform: rotate(-1.5deg);
+      transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1);
+      margin: 0 auto 1.5rem;
+      border: 1px solid rgba(201,168,76,0.4);
+      max-width: min(260px, 70vw);
+      position: relative;
+    }
+    .hero-photo:hover { transform: rotate(0deg) scale(1.03); }
+    .hero-photo img { border-radius: 2px; }
+    .hero-photo .photo-caption {
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--gold);
+    }
+
+    .hero-sprig {
+      color: var(--gold);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 8px;
+      opacity: 0.7;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 8vw, 3.8rem);
+      color: var(--brown);
+      margin-bottom: 0.3rem;
+      font-weight: 700;
+      line-height: 1.2;
+      padding: 0 0.5rem;
+    }
+    .hero h1 .ampersand {
+      color: var(--gold);
+      font-style: italic;
+      font-size: clamp(1.8rem, 6vw, 3rem);
+    }
+    .wedding-date {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+      color: var(--lavender);
+      margin-top: 0.5rem;
+      letter-spacing: 4px;
+      font-style: italic;
+    }
+    .wedding-location {
+      font-size: clamp(0.85rem, 2.5vw, 1rem);
+      color: var(--olive);
+      margin-top: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .soft-emoji { opacity: 0.55; filter: grayscale(35%) brightness(1.05); }
+
+    .countdown {
+      display: flex;
+      gap: clamp(0.8rem, 4vw, 2rem);
+      justify-content: center;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .countdown-item { text-align: center; min-width: 60px; }
+    .countdown-item .number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      color: var(--lavender);
+      display: block;
+      line-height: 1;
+    }
+    .countdown-item .label {
+      font-size: clamp(0.65rem, 2vw, 0.75rem);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--olive);
+      margin-top: 5px;
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: clamp(50px, 8vw, 80px) 1.5rem; }
+    .section-alt { background: #FFF; }
+    .container { max-width: 900px; margin: 0 auto; width: 100%; }
+
+    /* ===== TIMELINE ===== */
+    .timeline { position: relative; padding: 20px 0; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold-light), var(--lavender-light), var(--olive-light));
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 3px solid var(--cream);
+      box-shadow: 0 0 0 3px var(--gold-light);
+      z-index: 2;
+    }
+    .timeline-content {
+      width: 42%;
+      background: #FFF;
+      padding: 1.5rem 1.8rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(61,44,30,0.06);
+      border: 1px solid rgba(201,168,76,0.15);
+      transition: transform 0.3s ease;
+    }
+    .timeline-content:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(61,44,30,0.1); }
+    .timeline-time {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--lavender);
+      margin-bottom: 0.3rem;
+    }
+    .timeline-event { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.3rem; }
+    .timeline-desc { font-size: 0.92rem; color: #6B5D50; }
+    .timeline-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+    /* ===== COULEURS ===== */
+    .color-palette {
+      display: flex;
+      justify-content: center;
+      gap: clamp(0.8rem, 3vw, 1.5rem);
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .color-swatch { text-align: center; }
+    .color-circle {
+      width: clamp(55px, 15vw, 70px);
+      height: clamp(55px, 15vw, 70px);
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border: 3px solid #FFF;
+    }
+    .color-name { font-size: 0.82rem; }
+    .dress-info {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 2.5rem;
+      font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+      line-height: 1.9;
+    }
+
+    /* ===== LIEUX ===== */
+    .lieu-card {
+      background: #FFF;
+      border-radius: 14px;
+      padding: clamp(1.3rem, 4vw, 2rem);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 20px rgba(61,44,30,0.06);
+      border-left: 4px solid var(--gold);
+      transition: transform 0.3s ease;
+    }
+    .lieu-card:hover { transform: translateX(5px); }
+    .lieu-card h3 {
+      color: var(--lavender);
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
+      margin-bottom: 0.5rem;
+      word-wrap: break-word;
+    }
+    .lieu-card .lieu-icon { font-size: 1.5rem; margin-right: 8px; }
+    .lieu-card p { margin-bottom: 0.4rem; font-size: 0.95rem; word-wrap: break-word; }
+    .lieu-card .lieu-address { color: var(--olive); font-style: italic; }
+    .lieu-card iframe {
+      width: 100%;
+      height: clamp(200px, 40vw, 250px);
+      border: 0;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+    .parking-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+      padding: 12px 22px;
+      min-height: 44px;
+      background: rgba(123,107,165,0.1);
+      color: var(--lavender);
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: 1px solid rgba(123,107,165,0.3);
+      transition: all 0.3s ease;
+    }
+    .parking-link:hover, .parking-link:active { background: var(--lavender); color: #FFF; }
+
+    /* ===== LOGEMENT CAROUSEL ===== */
+    .logement-carousel-wrapper {
+      position: relative;
+      padding: 0 clamp(30px, 8vw, 55px);
+    }
+    .logement-carousel {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 1rem 0;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .logement-carousel::-webkit-scrollbar { display: none; }
+    .logement-card {
+      flex: 0 0 calc((100% - 3rem) / 3);
+      scroll-snap-align: start;
+      background: #FFF;
+      border-radius: 14px;
+      padding: 1.8rem 1.3rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(61,44,30,0.06);
+      border-top: 3px solid var(--olive);
+      transition: transform 0.3s ease;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .logement-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(61,44,30,0.1); }
+    .logement-card .logement-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .logement-card .logement-type {
+      font-size: 0.7rem;
+      color: var(--olive);
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+    .logement-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+      color: var(--brown);
+      line-height: 1.3;
+    }
+    .logement-link {
+      display: inline-block;
+      margin-top: auto;
+      color: var(--lavender);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 10px 18px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--lavender);
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      align-self: center;
+    }
+    .logement-link:hover, .logement-link:active { background: var(--lavender); color: #FFF; }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: var(--lavender);
+      color: #FFF;
+      font-size: 1.6rem;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 4px 15px rgba(123,107,165,0.35);
+      transition: background 0.3s ease, transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      padding: 0;
+      -webkit-appearance: none;
+    }
+    .carousel-btn:hover, .carousel-btn:active { background: var(--gold); }
+    .carousel-btn:hover { transform: translateY(-50%) scale(1.1); }
+    .carousel-prev { left: 0; }
+    .carousel-next { right: 0; }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+      padding: 0 1rem;
+    }
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(123,107,165,0.3);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+      min-width: 12px;
+    }
+    .carousel-dot.active { background: var(--lavender); width: 28px; border-radius: 6px; }
+    .reservation-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-style: italic;
+      color: #6B5D50;
+      padding: 0 1rem;
+    }
+    .swipe-hint {
+      display: none;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--olive);
+      font-style: italic;
+      margin-top: 0.5rem;
+      opacity: 0.7;
+    }
+
+    /* ===== RSVP ===== */
+    .rsvp-section {
+      background: linear-gradient(135deg, var(--lavender) 0%, #6A5A94 100%);
+      color: #FFF;
+      text-align: center;
+    }
+    .rsvp-section .section-title, .rsvp-section .section-subtitle { color: #FFF; }
+    .rsvp-section .section-divider::before, .rsvp-section .section-divider::after { background: var(--gold-light); }
+    .rsvp-text {
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      margin-bottom: 2rem;
+      line-height: 1.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 1rem;
+    }
+
+    /* ===== BOUTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px clamp(30px, 6vw, 45px);
+      min-height: 48px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      text-align: center;
+      -webkit-appearance: none;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-gold { background: var(--gold); color: #FFF; box-shadow: 0 6px 25px rgba(201,168,76,0.4); }
+    .btn-gold:hover, .btn-gold:active { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--lavender); border: 2px solid var(--lavender); }
+    .btn-outline:hover, .btn-outline:active { background: var(--lavender); color: #FFF; }
+    .btn-disabled {
+      background: transparent !important;
+      color: #999 !important;
+      border: 2px solid #CCC !important;
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: 0.6;
+      box-shadow: none !important;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-cards {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .contact-card {
+      background: #FFF;
+      border-radius: 14px;
+      padding: clamp(2rem, 5vw, 2.5rem) clamp(1.8rem, 5vw, 3rem);
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(61,44,30,0.06);
+      min-width: min(280px, 100%);
+      flex: 1 1 280px;
+      max-width: 380px;
+      transition: transform 0.3s ease;
+    }
+    .contact-card:hover { transform: translateY(-5px); }
+    .contact-card .contact-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .contact-card h3 { color: var(--lavender); margin-bottom: 1rem; font-size: 1.1rem; }
+    .contact-entry { margin: 0.8rem 0; }
+    .contact-entry .contact-name {
+      font-size: 0.8rem;
+      color: var(--olive);
+      font-style: italic;
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .contact-entry a {
+      color: var(--lavender);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: clamp(0.9rem, 2.5vw, 0.95rem);
+      word-break: break-word;
+      display: inline-block;
+      padding: 8px 4px;
+      min-height: 44px;
+    }
+    .contact-entry a:hover, .contact-entry a:active { color: var(--gold); }
+    .contact-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-light), transparent);
+      margin: 1rem 0;
+    }
+
+    /* ===== GALERIE ===== */
+    .galerie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    .galerie-card {
+      background: #FFF;
+      border-radius: 14px;
+      padding: clamp(2rem, 5vw, 2.5rem);
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(61,44,30,0.06);
+      border-bottom: 3px solid var(--gold);
+      transition: transform 0.3s ease;
+    }
+    .galerie-card:hover { transform: translateY(-5px); }
+    .galerie-card .galerie-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .galerie-card p { margin-bottom: 1.5rem; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--brown);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 3rem 1.5rem;
+      padding-bottom: calc(3rem + var(--safe-bottom));
+    }
+    footer .footer-names {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+    footer .footer-heart { color: var(--lavender-light); font-size: 1.2rem; margin: 1rem 0; }
+
+    /* ===== BACK TO TOP ===== */
+    .back-to-top {
+      position: fixed;
+      bottom: calc(20px + var(--safe-bottom));
+      right: calc(20px + var(--safe-right));
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--lavender);
+      color: #FFF;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(123,107,165,0.3);
+      z-index: 999;
+      -webkit-appearance: none;
+    }
+    .back-to-top.visible { opacity: 1; visibility: visible; }
+    .back-to-top:hover, .back-to-top:active { background: var(--gold); }
+
+    /* ============================================
+       TABLETTE (769px – 1024px)
+    ============================================ */
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .logement-card { flex: 0 0 calc((100% - 1.5rem) / 2); }
+      .nav-links a { font-size: 0.75rem; padding: 12px 10px; letter-spacing: 1px; }
+    }
+
+    /* ============================================
+       MOBILE (≤ 768px) — Optimisations complètes
+    ============================================ */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0 1rem;
+        padding-left: max(1rem, var(--safe-left));
+        padding-right: max(1rem, var(--safe-right));
+        justify-content: space-between;
+      }
+      .nav-brand { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        right: 0;
+        background: var(--cream);
+        flex-direction: column;
+        padding: 1rem;
+        padding-left: max(1rem, var(--safe-left));
+        padding-right: max(1rem, var(--safe-right));
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        max-height: calc(100vh - 65px);
+        overflow-y: auto;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        padding: 14px 16px;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        border-bottom: 1px solid rgba(123,107,165,0.1);
+        justify-content: center;
+      }
+      .nav-links li:last-child a { border-bottom: none; }
+      .nav-toggle { display: flex; }
+
+      .hero {
+        padding: 90px 1rem 50px;
+        background-attachment: scroll;
+      }
+      .hero-topdivider::before, .hero-topdivider::after { width: 40px; }
+
+      section { padding: 50px 1rem; }
+
+      .timeline::before { left: 20px; }
+      .timeline-item, .timeline-item:nth-child(odd) {
+        flex-direction: row;
+        padding-left: 50px;
+      }
+      .timeline-dot { left: 20px; }
+      .timeline-content { width: 100%; padding: 1.2rem 1.3rem; }
+      .timeline-time { font-size: 1.15rem; }
+
+      .lieu-card { padding: 1.3rem 1.2rem; }
+      .lieu-card iframe { height: 200px; }
+
+      .logement-carousel-wrapper { padding: 0 30px; }
+      .logement-card {
+        flex: 0 0 calc(100% - 1rem);
+        min-height: 240px;
+      }
+      .carousel-btn { width: 40px; height: 40px; font-size: 1.4rem; }
+      .swipe-hint { display: block; }
+
+      .contact-cards { gap: 1rem; }
+      .contact-card { min-width: 100%; padding: 1.8rem 1.2rem; }
+
+      .btn { padding: 14px 30px; font-size: 0.8rem; letter-spacing: 1.5px; }
+
+      footer { padding: 2.5rem 1rem; padding-bottom: calc(2.5rem + var(--safe-bottom)); }
+    }
+
+    /* ============================================
+       PETITS MOBILES (≤ 380px)
+    ============================================ */
+    @media (max-width: 380px) {
+      .countdown { gap: 0.5rem; }
+      .countdown-item { min-width: 55px; }
+      .hero { padding: 85px 0.8rem 40px; }
+      .hero h1 { font-size: 2rem; }
+      .wedding-location { letter-spacing: 1px; font-size: 0.8rem; }
+      .lieu-card { padding: 1.1rem 1rem; }
+      .lieu-card iframe { height: 180px; }
+    }
+
+    /* ============================================
+       ORIENTATION PAYSAGE MOBILE
+    ============================================ */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hero { min-height: auto; padding: 80px 1rem 40px; }
+      .hero-photo { max-width: 180px; }
+      .countdown { margin-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <span class="nav-brand">L &amp; L</span>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#planning">Planning</a></li>
+      <li><a href="#dresscode">Thèmes</a></li>
+      <li><a href="#lieux">Lieux</a></li>
+      <li><a href="#logement">Logement</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="accueil">
+    <div class="hero-content">
+      <div class="hero-topdivider"><span>◈</span></div>
+      <div class="hero-photo">
+        <img src="images/couple.jpg" alt="Lucile et Louis" loading="eager">
+        <div class="photo-caption">les futurs mariés</div>
+      </div>
+      <div class="hero-sprig">❦</div>
+      <h1>Lucile <span class="ampersand">&amp;</span> Louis</h1>
+      <p class="wedding-date">17 Juillet 2027</p>
+      <p class="wedding-location"><span class="soft-emoji">🪻</span> Mas de Coupie <span class="soft-emoji">🪻</span></p>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item"><span class="number" id="days">--</span><span class="label">Jours</span></div>
+        <div class="countdown-item"><span class="number" id="hours">--</span><span class="label">Heures</span></div>
+        <div class="countdown-item"><span class="number" id="minutes">--</span><span class="label">Minutes</span></div>
+        <div class="countdown-item"><span class="number" id="seconds">--</span><span class="label">Secondes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANNING -->
+  <section id="planning" class="section-alt">
+    <div class="container">
+      <h2 class="section-title fade-in">Programme de la Journée</h2>
+      <div class="section-divider"><span>🕊️</span></div>
+      <p class="section-subtitle fade-in">Une journée sous le soleil de Provence</p>
+      <div class="timeline">
+        <div class="timeline-item fade-in"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-icon">🏛️</div><div class="timeline-time">15h00</div><div class="timeline-event">Cérémonie Civile — Mairie</div><div class="timeline-desc">Rendez-vous devant la mairie. Merci d'arriver 15 minutes en avance (14h45).</div></div></div>
+        <div class="timeline-item fade-in"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-icon">⛪</div><div class="timeline-time">16h15</div><div class="timeline-event">Cérémonie Religieuse — Église</div><div class="timeline-desc">Célébration de notre union dans la Collégiale Saint-Laurent. Un moment d'émotion et de recueillement.</div></div></div>
+        <div class="timeline-item fade-in"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-icon">🍋</div><div class="timeline-time">17h30</div><div class="timeline-event">Arrivée au Mas de Coupie</div><div class="timeline-desc">Accueil avec citronnade fraîche et temps dédié aux photos dans les jardins du Mas.</div></div></div>
+        <div class="timeline-item fade-in"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-icon">🥂</div><div class="timeline-time">19h00</div><div class="timeline-event">Cocktail</div><div class="timeline-desc">Vin d'honneur au son des cigales, cocktail provençal avec produits du terroir.</div></div></div>
+        <div class="timeline-item fade-in"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-icon">🍽️</div><div class="timeline-time">21h00</div><div class="timeline-event">Dîner convivial</div><div class="timeline-desc">Dîner convivial autour d'un atelier grillades et d'un moment de partage.</div></div></div>
+        <div class="timeline-item fade-in"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-icon">🎶</div><div class="timeline-time">23h00</div><div class="timeline-event">Soirée dansante</div><div class="timeline-desc">Ouverture de bal et soirée festive jusqu'au bout de la nuit. Préparez vos chaussures de danse !</div></div></div>
+        <div class="timeline-item fade-in"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-icon">🥐</div><div class="timeline-time">12h00 — Dimanche 18 juillet</div><div class="timeline-event">Brunch du lendemain</div><div class="timeline-desc">On prolonge le bonheur autour d'un brunch convivial au Mas de Coupie. Ambiance décontractée et retrouvailles chaleureuses.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THÈMES & COULEURS -->
+  <section id="dresscode">
+    <div class="container">
+      <h2 class="section-title fade-in">Thèmes &amp; Couleurs</h2>
+      <div class="section-divider"><span>🪻</span></div>
+      <p class="section-subtitle fade-in">Notre palette inspirée de la Provence</p>
+      <div class="dress-info fade-in">
+        <p>Notre mariage se tient sous le thème de la <strong>Provence élégante</strong> : entre champs de lavande, oliviers centenaires et lumière dorée du sud.</p>
+        <p style="margin-top:1rem;">Pour vos tenues, nous vous invitons à privilégier les <strong>tons doux et naturels</strong> en harmonie avec notre palette. Évitez le blanc (réservé aux mariés 😊) et le noir total.</p>
+        <p style="margin-top:1rem;">Pensez <strong>chic champêtre</strong> : robes fluides, costumes en lin, couleurs pastel ou terracotta… Sentez-vous libres et beaux !</p>
+      </div>
+      <div class="color-palette fade-in">
+        <div class="color-swatch"><div class="color-circle" style="background:#7B6BA5;"></div><div class="color-name">Lavande</div></div>
+        <div class="color-swatch"><div class="color-circle" style="background:#7A8B5C;"></div><div class="color-name">Olive</div></div>
+        <div class="color-swatch"><div class="color-circle" style="background:#C9A84C;"></div><div class="color-name">Or</div></div>
+        <div class="color-swatch"><div class="color-circle" style="background:#D4A574;"></div><div class="color-name">Terracotta</div></div>
+        <div class="color-swatch"><div class="color-circle" style="background:#E8D5C4;"></div><div class="color-name">Sable</div></div>
+        <div class="color-swatch"><div class="color-circle" style="background:#C4A7D7;"></div><div class="color-name">Mauve clair</div></div>
+        <div class="color-swatch"><div class="color-circle" style="background:#F5E6D3;"></div><div class="color-name">Crème rosé</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIEUX -->
+  <section id="lieux" class="section-alt">
+    <div class="container">
+      <h2 class="section-title fade-in">Lieux &amp; Accès</h2>
+      <div class="section-divider"><span>📍</span></div>
+      <p class="section-subtitle fade-in">Tous les détails pour nous rejoindre</p>
+
+      <div class="lieu-card fade-in">
+        <h3><span class="lieu-icon">🏛️</span>Mairie</h3>
+        <p class="lieu-address">Place de l'Hôtel de Ville, 174 cours Gimon</p>
+        <p>13300 Salon-de-Provence</p>
+        <p>🕐 <strong>15h00</strong> — Prévoir d'arriver vers 14h45</p>
+        <iframe src="https://www.google.com/maps?q=H%C3%B4tel+de+Ville+Salon-de-Provence&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Carte Mairie"></iframe>
+        <a href="https://www.google.com/maps/search/parking/@43.6403,5.0975,15z" target="_blank" rel="noopener" class="parking-link">🅿️ Voir les parkings à proximité</a>
+      </div>
+
+      <div class="lieu-card fade-in">
+        <h3><span class="lieu-icon">⛪</span>Église</h3>
+        <p class="lieu-address">Collégiale Saint-Laurent, 15 rue des Alliés</p>
+        <p>13300 Salon-de-Provence</p>
+        <p>🕐 <strong>16h15</strong></p>
+        <iframe src="https://www.google.com/maps?q=Coll%C3%A9giale+Saint-Laurent+Salon-de-Provence&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Carte Église"></iframe>
+      </div>
+
+      <div class="lieu-card fade-in">
+        <h3><span class="lieu-icon">🏡</span>Mas de Coupie — Cocktail, Dîner &amp; Soirée</h3>
+        <p class="lieu-address">Mas de Coupie</p>
+        <p>13430 Chemin des Paradis, 13430 Eyguières</p>
+        <p>🕐 Accueil à partir de <strong>17h30</strong> (citronnade + photos)</p>
+        <p>🥂 Cocktail à <strong>19h00</strong></p>
+        <p>🍽️ Dîner à <strong>21h00</strong></p>
+        <p>🅿️ Parking : Disponible sur place</p>
+        <iframe src="https://www.google.com/maps?q=Mas+de+Coupie+Eygui%C3%A8res&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Carte Mas de Coupie"></iframe>
+      </div>
+
+      <div class="lieu-card fade-in">
+        <h3><span class="lieu-icon">🥐</span>Brunch — Dimanche 18 juillet</h3>
+        <p class="lieu-address">Mas de Coupie</p>
+        <p>13430 Chemin des Paradis, 13430 Eyguières</p>
+        <p>🕐 à partir de <strong>12h00</strong></p>
+        <iframe src="https://www.google.com/maps?q=Mas+de+Coupie+Eygui%C3%A8res&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Carte Brunch"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGEMENT -->
+  <section id="logement">
+    <div class="container">
+      <h2 class="section-title fade-in">Propositions de logement</h2>
+      <div class="section-divider"><span>🛏️</span></div>
+      <p class="section-subtitle fade-in">Quelques idées pour votre séjour en Provence</p>
+      <div class="logement-carousel-wrapper fade-in">
+        <button class="carousel-btn carousel-prev" aria-label="Précédent">‹</button>
+        <div class="logement-carousel" id="logementCarousel">
+          <div class="logement-card"><div class="logement-icon">⛺</div><div class="logement-type">Camping</div><h3>Camping Nostradamus</h3><a href="https://www.google.com/maps/search/Camping+Nostradamus+Salon-de-Provence" target="_blank" rel="noopener" class="logement-link">Voir sur la carte ↗</a></div>
+          <div class="logement-card"><div class="logement-icon">🏡</div><div class="logement-type">Chambre d'hôtes</div><h3>Maison d'hôtes des Jardins</h3><a href="https://www.google.com/maps/search/Maison+d%27h%C3%B4tes+des+Jardins+Salon-de-Provence" target="_blank" rel="noopener" class="logement-link">Voir sur la carte ↗</a></div>
+          <div class="logement-card"><div class="logement-icon">🏨</div><div class="logement-type">Hôtel</div><h3>Domaine de Roquerousse</h3><a href="https://www.google.com/maps/search/Domaine+de+Roquerousse+Salon-de-Provence" target="_blank" rel="noopener" class="logement-link">Voir sur la carte ↗</a></div>
+          <div class="logement-card"><div class="logement-icon">🏨</div><div class="logement-type">Hôtel</div><h3>La Maison Clémenceau</h3><a href="https://www.google.com/maps/search/La+Maison+Cl%C3%A9menceau+Salon-de-Provence" target="_blank" rel="noopener" class="logement-link">Voir sur la carte ↗</a></div>
+          <div class="logement-card"><div class="logement-icon">🏡</div><div class="logement-type">Chambre d'hôtes</div><h3>Les Cigales de Tatie</h3><a href="https://www.google.com/maps/search/Les+Cigales+de+Tatie+Salon-de-Provence" target="_blank" rel="noopener" class="logement-link">Voir sur la carte ↗</a></div>
+          <div class="logement-card"><div class="logement-icon">🏨</div><div class="logement-type">Hôtel</div><h3>Hôtel Lou Castellas</h3><a href="https://www.google.com/maps/search/H%C3%B4tel+Lou+Castellas+Salon-de-Provence" target="_blank" rel="noopener" class="logement-link">Voir sur la carte ↗</a></div>
+          <div class="logement-card"><div class="logement-icon">🏡</div><div class="logement-type">Chambre d'hôtes</div><h3>Résidence Les Myrtilles</h3><a href="https://www.google.com/maps/search/Residence+Les+Myrtilles+Salon-de-Provence" target="_blank" rel="noopener" class="logement-link">Voir sur la carte ↗</a></div>
+          <div class="logement-card"><div class="logement-icon">🏡</div><div class="logement-type">Chambre d'hôtes</div><h3>Chambre d'hôtes ANAIS</h3><a href="https://www.google.com/maps/search/Chambre+d%27h%C3%B4tes+ANAIS+Salon-de-Provence" target="_blank" rel="noopener" class="logement-link">Voir sur la carte ↗</a></div>
+          <div class="logement-card"><div class="logement-icon">🏡</div><div class="logement-type">Chambre d'hôtes</div><h3>L'Atelier de Marie</h3><a href="https://www.google.com/maps/search/L%27Atelier+de+Marie+Salon-de-Provence" target="_blank" rel="noopener" class="logement-link">Voir sur la carte ↗</a></div>
+          <div class="logement-card"><div class="logement-icon">🏡</div><div class="logement-type">Chambre d'hôtes</div><h3>La Demeure</h3><a href="https://www.google.com/maps/search/La+Demeure+chambre+d%27h%C3%B4tes+Salon-de-Provence" target="_blank" rel="noopener" class="logement-link">Voir sur la carte ↗</a></div>
+          <div class="logement-card"><div class="logement-icon">🏡</div><div class="logement-type">Chambre d'hôtes</div><h3>Le Mas de l'Étoile</h3><a href="https://www.google.com/maps/search/Le+Mas+de+l%27Etoile+Salon-de-Provence" target="_blank" rel="noopener" class="logement-link">Voir sur la carte ↗</a></div>
+          <div class="logement-card"><div class="logement-icon">🏡</div><div class="logement-type">Chambre d'hôtes</div><h3>Gîte Les Loups</h3><a href="https://www.google.com/maps/search/g%C3%AEte+les+loups+Salon-de-Provence" target="_blank" rel="noopener" class="logement-link">Voir sur la carte ↗</a></div>
+          <div class="logement-card"><div class="logement-icon">🌿</div><div class="logement-type">Airbnb</div><h3>Airbnb Eyguières</h3><a href="https://www.airbnb.fr/s/Eygui%C3%A8res/homes" target="_blank" rel="noopener" class="logement-link">Voir sur Airbnb ↗</a></div>
+        </div>
+        <button class="carousel-btn carousel-next" aria-label="Suivant">›</button>
+      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <p class="swipe-hint">👉 Faites glisser pour voir plus</p>
+      <p class="reservation-note fade-in">💡 Nous vous recommandons de réserver au plus tôt, la Provence est très demandée en juillet !</p>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp" class="rsvp-section">
+    <div class="container">
+      <h2 class="section-title fade-in">Confirmez votre présence</h2>
+      <div class="section-divider fade-in"><span>💌</span></div>
+      <p class="section-subtitle fade-in">Nous avons hâte de savoir si vous serez des nôtres !</p>
+      <p class="rsvp-text fade-in">Merci de remplir le formulaire ci-dessous pour nous confirmer votre venue.<br>Vous pourrez indiquer le <strong>nombre de personnes</strong>, vos éventuelles <strong>allergies alimentaires</strong>, et même nous suggérer des <strong>musiques pour la soirée</strong> 🎵</p>
+      <p class="rsvp-text fade-in" style="font-size:0.95rem;opacity:0.9;">⏳ <em>Merci de répondre avant le <strong>17 mars 2027</strong></em></p>
+      <div class="fade-in" style="text-align:center;">
+        <a href="[LIEN FORMS]" target="_blank" rel="noopener" class="btn btn-gold">✉️ Répondre au formulaire</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title fade-in">Nous contacter</h2>
+      <div class="section-divider"><span>💬</span></div>
+      <p class="section-subtitle fade-in">Une question ? N'hésitez pas à nous écrire !</p>
+      <div class="contact-cards fade-in">
+        <div class="contact-card">
+          <div class="contact-icon">📧</div>
+          <h3>E-mail</h3>
+          <div class="contact-entry"><div class="contact-name">Lucile</div><a href="mailto:lucile.flore.lisa.seris@gmail.com">lucile.flore.lisa.seris@gmail.com</a></div>
+          <div class="contact-divider"></div>
+          <div class="contact-entry"><div class="contact-name">Louis</div><a href="mailto:granonlouis@gmail.com">granonlouis@gmail.com</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📱</div>
+          <h3>Téléphone</h3>
+          <div class="contact-entry"><div class="contact-name">Lucile</div><a href="tel:+33633720418">06.33.72.04.18</a></div>
+          <div class="contact-divider"></div>
+          <div class="contact-entry"><div class="contact-name">Louis</div><a href="tel:+33684990355">06.84.99.03.55</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="galerie" class="section-alt">
+    <div class="container">
+      <h2 class="section-title fade-in">Galeries Photos</h2>
+      <div class="section-divider"><span>📸</span></div>
+      <p class="section-subtitle fade-in">Revivez les plus beaux moments avec nous</p>
+      <div class="galerie-grid fade-in">
+        <div class="galerie-card">
+          <div class="galerie-icon">🎞️</div>
+          <h3>Galerie officielle</h3>
+          <p>Retrouvez les clichés professionnels de notre photographe. Les photos seront disponibles quelques semaines après le mariage.</p>
+          <span class="btn btn-outline btn-disabled">Bientôt disponible</span>
+          <p style="margin-top:0.8rem;font-size:0.8rem;color:#999;font-style:italic;">Galerie disponible après le mariage</p>
+        </div>
+        <div class="galerie-card">
+          <div class="galerie-icon">🤳</div>
+          <h3>Vos photos</h3>
+          <p>Partagez vos plus beaux clichés de la journée ! Chaque regard, chaque moment compte pour nous.</p>
+          <a href="https://photos.app.goo.gl/U8KbZTR3pVJWoagF8" target="_blank" rel="noopener" class="btn btn-outline">Partager mes photos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-names">Lucile &amp; Louis</div>
+    <div class="footer-heart">♥</div>
+    <p>17 Juillet 2027 — Mas de Coupie, Eyguières</p>
+    <p style="margin-top:1rem;font-size:0.8rem;opacity:0.5;padding:0 1rem;">« On ne voit bien qu'avec le cœur. L'essentiel est invisible pour les yeux. » — Antoine de Saint-Exupéry</p>
+    <p style="margin-top:1.5rem;font-size:0.75rem;opacity:0.35;">Fait avec amour 🪻</p>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
+
+  <script>
+    // ===== COUNTDOWN =====
+    function updateCountdown() {
+      const target = new Date('2027-07-17T15:00:00').getTime();
+      const now = Date.now();
+      const diff = target - now;
+      if (diff <= 0) {
+        document.getElementById('days').textContent = '🎉';
+        document.getElementById('hours').textContent = '';
+        document.getElementById('minutes').textContent = '';
+        document.getElementById('seconds').textContent = '';
+        return;
+      }
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const minutes = Math.floor((diff % 3600000) / 60000);
+      const seconds = Math.floor((diff % 60000) / 1000);
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ===== FADE-IN ON SCROLL =====
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    fadeElements.forEach(el => observer.observe(el));
+
+    // ===== NAVBAR SCROLL EFFECT =====
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // ===== BACK TO TOP =====
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 500);
+    }, { passive: true });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ===== MOBILE NAV TOGGLE =====
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.textContent = isOpen ? '✕' : '☰';
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.textContent = '☰';
+      });
+    });
+
+    // ===== ACTIVE NAV LINK =====
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+      });
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    }, { passive: true });
+
+    // ===== LOGEMENT CAROUSEL =====
+    const lgCarousel = document.getElementById('logementCarousel');
+    const lgDots = document.getElementById('carouselDots');
+    const lgPrev = document.querySelector('.carousel-prev');
+    const lgNext = document.querySelector('.carousel-next');
+    const totalLgCards = lgCarousel.children.length;
+
+    function getCardsPerView() {
+      if (window.innerWidth <= 768) return 1;
+      if (window.innerWidth <= 1024) return 2;
+      return 3;
+    }
+    function getScrollStep() {
+      if (!lgCarousel.children.length) return 0;
+      const style = getComputedStyle(lgCarousel);
+      const gap = parseFloat(style.gap) || 0;
+      return lgCarousel.children[0].offsetWidth + gap;
+    }
+    function updateLgDots() {
+      const cpv = getCardsPerView();
+      const pages = Math.ceil(totalLgCards / cpv);
+      lgDots.innerHTML = '';
+      for (let i = 0; i < pages; i++) {
+        const d = document.createElement('button');
+        d.className = 'carousel-dot';
+        d.setAttribute('aria-label', 'Page ' + (i+1));
+        d.addEventListener('click', () => {
+          lgCarousel.scrollTo({ left: i * cpv * getScrollStep(), behavior: 'smooth' });
+        });
+        lgDots.appendChild(d);
+      }
+      updateActiveDot();
+    }
+    function updateActiveDot() {
+      const cpv = getCardsPerView();
+      const step = getScrollStep();
+      if (step === 0) return;
+      const idx = Math.round(lgCarousel.scrollLeft / step);
+      const page = Math.floor(idx / cpv);
+      document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === page);
+      });
+    }
+    lgPrev.addEventListener('click', () => {
+      lgCarousel.scrollBy({ left: -getScrollStep() * getCardsPerView(), behavior: 'smooth' });
+    });
+    lgNext.addEventListener('click', () => {
+      lgCarousel.scrollBy({ left: getScrollStep() * getCardsPerView(), behavior: 'smooth' });
+    });
+    lgCarousel.addEventListener('scroll', updateActiveDot, { passive: true });
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateLgDots, 150);
+    });
+    updateLgDots();
+  </script>
+</body>
+</html>
