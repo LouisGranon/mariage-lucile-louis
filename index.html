@@ -435,7 +435,7 @@
         <p class="section-subtitle fade-in">Notre palette inspirée de la Provence</p>
         <div class="dress-info fade-in">
           <p>Notre mariage se tient sous le thème de la <strong>Provence élégante</strong> : entre champs de lavande, oliviers centenaires et lumière dorée du sud.</p>
-          <p style="margin-top:1rem;">Pour vos tenues, nous vous invitons à privilégier les <strong>tons doux et naturels</strong> en harmonie avec notre palette. Évitez le blanc (réservé aux mariés 😊) et le noir total.</p>
+          <p style="margin-top:1rem;">Pour vos tenues, nous vous invitons à privilégier les <strong>tons doux et naturels</strong> en harmonie avec notre palette. Évitez le blanc et le noir total.</p>
           <p style="margin-top:1rem;">Pensez <strong>chic champêtre</strong> : robes fluides, costumes en lin, couleurs pastel ou terracotta… Sentez-vous libres et beaux !</p>
         </div>
         <div class="color-palette fade-in">
@@ -536,7 +536,7 @@
         <p class="rsvp-text fade-in">Merci de remplir le formulaire ci-dessous pour nous confirmer votre venue.<br>Vous pourrez indiquer le <strong>nombre de personnes</strong>, vos éventuelles <strong>allergies alimentaires</strong>, et même nous suggérer des <strong>musiques pour la soirée</strong> 🎵</p>
         <p class="rsvp-text fade-in" style="font-size:0.95rem;opacity:0.9;">⏳ <em>Merci de répondre avant le <strong>17 mars 2027</strong></em></p>
         <div class="fade-in" style="text-align:center;">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScSJca44vMZM20iKF0Gj9yeUbqoALC1DkUws8EQGWEJW_P56w/viewform" target="_blank" rel="noopener" class="btn btn-gold">✉️ Répondre au formulaire</a>
+          <a href="#" id="rsvpButton" target="_blank" rel="noopener" class="btn btn-gold">✉️ Répondre au formulaire</a>
         </div>
       </div>
     </section>
@@ -613,11 +613,22 @@
       'coupie2027': 'without'    // sans brunch
     };
 
+    // Liens RSVP différents selon la version
+    var RSVP_LINKS = {
+      'with': 'https://docs.google.com/forms/d/e/1FAIpQLScSJca44vMZM20iKF0Gj9yeUbqoALC1DkUws8EQGWEJW_P56w/viewform',
+      'without': 'https://docs.google.com/forms/d/e/1FAIpQLSdpcv30BYV9008PDKVr3J4e9KRJcBXfv44sAc319gyypcf0uw/viewform'
+    };
+
     function applyMode(mode) {
       if (mode === 'without') {
         document.body.classList.add('no-brunch');
       } else {
         document.body.classList.remove('no-brunch');
+      }
+      // Met à jour le lien du bouton RSVP selon la version
+      var rsvpBtn = document.getElementById('rsvpButton');
+      if (rsvpBtn && RSVP_LINKS[mode]) {
+        rsvpBtn.setAttribute('href', RSVP_LINKS[mode]);
       }
     }
 
