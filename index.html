@@ -210,12 +210,31 @@
     .timeline-desc { font-size: 0.92rem; color: #6B5D50; }
     .timeline-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
 
-    /* COULEURS */
-    .color-palette { display: flex; justify-content: center; gap: clamp(0.8rem, 3vw, 1.5rem); flex-wrap: wrap; margin-top: 2rem; }
-    .color-swatch { text-align: center; }
-    .color-circle { width: clamp(55px, 15vw, 70px); height: clamp(55px, 15vw, 70px); border-radius: 50%; margin: 0 auto 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 3px solid #FFF; }
-    .color-name { font-size: 0.82rem; }
+    /* =========================================================
+       COULEURS — organisées par familles
+    ========================================================= */
     .dress-info { text-align: center; max-width: 650px; margin: 0 auto 2.5rem; font-size: clamp(0.95rem, 2.5vw, 1.05rem); line-height: 1.9; }
+    .color-family { margin-bottom: 2.5rem; }
+    .color-family-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 3vw, 1.35rem);
+      color: var(--olive);
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .color-family-title::before, .color-family-title::after {
+      content: ''; width: 40px; height: 1px; background: var(--gold-light);
+    }
+    .color-palette { display: flex; justify-content: center; gap: clamp(0.8rem, 3vw, 1.5rem); flex-wrap: wrap; }
+    .color-swatch { text-align: center; width: clamp(72px, 20vw, 90px); }
+    .color-circle { width: clamp(55px, 15vw, 70px); height: clamp(55px, 15vw, 70px); border-radius: 50%; margin: 0 auto 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 3px solid #FFF; transition: transform 0.3s ease; }
+    .color-swatch:hover .color-circle { transform: scale(1.1); }
+    .color-name { font-size: 0.8rem; line-height: 1.3; }
 
     /* LIEUX */
     .lieu-card { background: #FFF; border-radius: 14px; padding: clamp(1.3rem, 4vw, 2rem); margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(61,44,30,0.06); border-left: 4px solid var(--gold); transition: transform 0.3s ease; }
@@ -427,7 +446,7 @@
       </div>
     </section>
 
-    <!-- THÈMES -->
+    <!-- THÈMES & COULEURS -->
     <section id="dresscode">
       <div class="container">
         <h2 class="section-title fade-in">Thèmes &amp; Couleurs</h2>
@@ -436,16 +455,67 @@
         <div class="dress-info fade-in">
           <p>Notre mariage se tient sous le thème de la <strong>Provence élégante</strong> : entre champs de lavande, oliviers centenaires et lumière dorée du sud.</p>
           <p style="margin-top:1rem;">Pour vos tenues, nous vous invitons à privilégier les <strong>tons doux et naturels</strong> en harmonie avec notre palette. Évitez le blanc et le noir total.</p>
-          <p style="margin-top:1rem;">Pensez <strong>chic champêtre</strong> : robes fluides, costumes en lin, couleurs pastel ou terracotta… Sentez-vous libres et beaux !</p>
+          <p style="margin-top:1rem;">Pensez <strong>chic champêtre</strong> : robes fluides, costumes en lin, couleurs pastel ou terracotta… <em>Choisissez la nuance qui vous inspire !</em> 🪻</p>
         </div>
-        <div class="color-palette fade-in">
-          <div class="color-swatch"><div class="color-circle" style="background:#7B6BA5;"></div><div class="color-name">Lavande</div></div>
-          <div class="color-swatch"><div class="color-circle" style="background:#7A8B5C;"></div><div class="color-name">Olive</div></div>
-          <div class="color-swatch"><div class="color-circle" style="background:#C9A84C;"></div><div class="color-name">Or</div></div>
-          <div class="color-swatch"><div class="color-circle" style="background:#D4A574;"></div><div class="color-name">Terracotta</div></div>
-          <div class="color-swatch"><div class="color-circle" style="background:#E8D5C4;"></div><div class="color-name">Sable</div></div>
-          <div class="color-swatch"><div class="color-circle" style="background:#C4A7D7;"></div><div class="color-name">Mauve clair</div></div>
-          <div class="color-swatch"><div class="color-circle" style="background:#F5E6D3;"></div><div class="color-name">Crème rosé</div></div>
+
+        <!-- Famille Violets -->
+        <div class="color-family fade-in">
+          <div class="color-family-title">Violets &amp; Lavande</div>
+          <div class="color-palette">
+            <div class="color-swatch"><div class="color-circle" style="background:#7B6BA5;"></div><div class="color-name">Lavande</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#9B7BB5;"></div><div class="color-name">Améthyste</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#C4A7D7;"></div><div class="color-name">Mauve clair</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#B9A5D0;"></div><div class="color-name">Glycine</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#6B5876;"></div><div class="color-name">Prune douce</div></div>
+          </div>
+        </div>
+
+        <!-- Famille Verts -->
+        <div class="color-family fade-in">
+          <div class="color-family-title">Verts &amp; Nature</div>
+          <div class="color-palette">
+            <div class="color-swatch"><div class="color-circle" style="background:#7A8B5C;"></div><div class="color-name">Olive</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#A3B18A;"></div><div class="color-name">Vert sauge</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#88A090;"></div><div class="color-name">Eucalyptus</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#7C7A4C;"></div><div class="color-name">Kaki</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#5F6F52;"></div><div class="color-name">Romarin</div></div>
+          </div>
+        </div>
+
+        <!-- Famille Terres & Chaudes -->
+        <div class="color-family fade-in">
+          <div class="color-family-title">Terres &amp; Tons chauds</div>
+          <div class="color-palette">
+            <div class="color-swatch"><div class="color-circle" style="background:#C9A84C;"></div><div class="color-name">Or</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#D9A94E;"></div><div class="color-name">Miel</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#B5714A;"></div><div class="color-name">Terracotta</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#E8B98A;"></div><div class="color-name">Abricot</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#C17A54;"></div><div class="color-name">Ocre rouge</div></div>
+          </div>
+        </div>
+
+        <!-- Famille Rosés & Poudrés -->
+        <div class="color-family fade-in">
+          <div class="color-family-title">Rosés &amp; Poudrés</div>
+          <div class="color-palette">
+            <div class="color-swatch"><div class="color-circle" style="background:#F3DDD5;"></div><div class="color-name">Crème rosé</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#E8D5C4;"></div><div class="color-name">Sable</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#DDC3B0;"></div><div class="color-name">Nude</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#E5BFB5;"></div><div class="color-name">Rose poudré</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#EAC9C1;"></div><div class="color-name">Blush</div></div>
+          </div>
+        </div>
+
+        <!-- Famille Bleutés -->
+        <div class="color-family fade-in">
+          <div class="color-family-title">Bleutés &amp; Fraîcheur</div>
+          <div class="color-palette">
+            <div class="color-swatch"><div class="color-circle" style="background:#A9B7C0;"></div><div class="color-name">Bleu lin</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#8595A8;"></div><div class="color-name">Bleu orage</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#4A5A6A;"></div><div class="color-name">Bleu ardoise</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#35696E;"></div><div class="color-name">Bleu canard</div></div>
+            <div class="color-swatch"><div class="color-circle" style="background:#C7C6C1;"></div><div class="color-name">Gris perle</div></div>
+          </div>
         </div>
       </div>
     </section>
@@ -625,7 +695,6 @@
       } else {
         document.body.classList.remove('no-brunch');
       }
-      // Met à jour le lien du bouton RSVP selon la version
       var rsvpBtn = document.getElementById('rsvpButton');
       if (rsvpBtn && RSVP_LINKS[mode]) {
         rsvpBtn.setAttribute('href', RSVP_LINKS[mode]);
@@ -640,7 +709,6 @@
       try { sessionStorage.setItem('weddingMode', mode); } catch (e) {}
     }
 
-    // Reprise de session si déjà déverrouillé
     try {
       var saved = sessionStorage.getItem('weddingMode');
       if (saved === 'with' || saved === 'without') { unlock(saved); }
